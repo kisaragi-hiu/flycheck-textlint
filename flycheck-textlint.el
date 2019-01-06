@@ -1,4 +1,4 @@
-;;; flycheck-textlint.el --- Flycheck integration for textlint
+;;; flycheck-textlint.el --- textlint integration with Flycheck
 ;;; -*- lexical-binding: t; -*-
 
 ;; Authors: Rob Stewart <R.Stewart@hw.ac.uk>
@@ -12,7 +12,7 @@
 
 ;;; Commentary:
 
-;; Flycheck integration for Textlint.
+;; textlint integration with Flycheck
 
 ;;; Code:
 
