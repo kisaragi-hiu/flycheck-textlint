@@ -2,7 +2,7 @@
 
 [textlint](https://textlint.github.io/) integration with Flycheck.
 
-Much of the code is from [A textlint flycheck checker in Emacs](https://www.macs.hw.ac.uk/~rs46/posts/2018-12-29-textlint-flycheck.html) by Rob Stewart.
+Originally written by Rob Stewart ([A textlint flycheck checker in Emacs](https://www.macs.hw.ac.uk/~rs46/posts/2018-12-29-textlint-flycheck.html)).
 
 ## Install
 
