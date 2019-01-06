@@ -38,7 +38,7 @@ Now write a [config file](https://textlint.github.io/docs/configuring.html); in 
 
 Save it to the file that `flycheck-textlint-config-file` points to, and start editing in a text-mode or markdown-mode buffer. Sentences with over 4 commas will be underlined because of the `max-comma` rule that we installed.
 
-![max-comma](https://github.com/kisaragi-hiu/flycheck-textlint/blob/master/max-comma.jpg)
+![max-comma](https://github.com/kisaragi-hiu/flycheck-textlint/blob/master/max-comma.png)
 
 ## Customize
 
