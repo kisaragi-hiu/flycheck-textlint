@@ -4,7 +4,7 @@
 ;; Authors: Rob Stewart <R.Stewart@hw.ac.uk>
 ;;          Kisaragi Hiu <mail@kisaragi-hiu.com>
 ;; URL: https://github.com/kisaragi-hiu/flycheck-textlint
-;; Version: 1.0.1
+;; Version: 1.1.0
 ;; Keywords: convenience languages tools
 ;; Package-Requires: ((flycheck "0.25"))
 
@@ -31,27 +31,47 @@
 
 (require 'flycheck)
 
-(flycheck-def-option-var
-    flycheck-textlint-config-file
+(flycheck-def-option-var flycheck-textlint-config-file
     (concat (getenv "HOME") "/.config/textlint/textlintrc.json")
     textlint
   "Path to textlint config file."
   :type 'file
   :safe #'stringp)
 
+(flycheck-def-option-var flycheck-textlint-plugin-alist
+    '((markdown-mode . "@textlint/markdown")
+      (t . "@textlint/text"))
+    textlint
+  "Alist mapping major modes to textlint plugins."
+  :type '(repeat (choice (cons symbol string)
+                         (cons (const t) string))))
+
 (flycheck-define-checker textlint
   "A linter for textlint."
   :command ("textlint"
             "--config" (eval flycheck-textlint-config-file)
             "--format" "unix"
-            source-inplace)
+            ;; get the first matching plugin from plugin-alist
+            "--plugin" (eval (car (cl-remove-if
+                                   #'booleanp
+                                   (mapcar
+                                    (lambda (item)
+                                      (let ((mode (car item))
+                                            (plugin (cdr item)))
+                                        (if (or (and mode (booleanp mode)) ; mode is t
+                                                (derived-mode-p mode))
+                                            plugin
+                                          nil)))
+                                    flycheck-textlint-plugin-alist))))
+            source)
   :error-patterns
   ((warning line-start (file-name) ":" line ":" column ": "
             (message (one-or-more not-newline)
                      (zero-or-more "\n" (any " ") (one-or-more not-newline)))
             line-end))
   :modes
-  (text-mode markdown-mode))
+  ;; TODO: this list needs to somehow be customizable
+  (text-mode markdown-mode latex-mode org-mode))
 
 (add-to-list 'flycheck-checkers 'textlint)
 
