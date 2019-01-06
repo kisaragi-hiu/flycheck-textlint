@@ -7,7 +7,7 @@
 ### [`straight.el`](https://github.com/raxod502/straight.el)
 
 ```elisp
-(straight-use-package '(flycheck-textlint :type git :host gitlab :repo "kisaragi-hiu/flycheck-textlint"))
+(straight-use-package '(flycheck-textlint :type git :host github :repo "kisaragi-hiu/flycheck-textlint"))
 ```
 
 ### Manually

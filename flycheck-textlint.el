@@ -3,7 +3,7 @@
 
 ;; Authors: Rob Stewart <R.Stewart@hw.ac.uk>
 ;;          Kisaragi Hiu <mail@kisaragi-hiu.com>
-;; URL: https://gitlab.com/kisaragi-hiu/flycheck-textlint
+;; URL: https://github.com/kisaragi-hiu/flycheck-textlint
 ;; Version: 1.0.0
 ;; Keywords: convenience languages tools
 ;; Package-Requires: ((flycheck "0.25"))
